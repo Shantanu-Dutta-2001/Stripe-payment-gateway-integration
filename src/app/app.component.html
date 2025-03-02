@@ -1,1 +1,8 @@
-<router-outlet></router-outlet>
+
+<div *ngIf="!isShowSuccessPage" class="custom-grid">
+    <app-stripe-payment [(donateClick)]="donateClick" (paymentSuccess)="paymentSuccess($event)"
+[paymentConfiguration]="paymentConfiguration" [person]="personDetails">
+</app-stripe-payment>
+<p-button label="Submit"  (onClick)="Submit()"/>
+</div>
+<div *ngIf="isShowSuccessPage"></div>

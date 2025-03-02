@@ -1,1 +1,43 @@
-<p>stripe-payment works!</p>
+<div class="grid" [formGroup]="paymentForm">
+  <div class="field col-12 md:col-6">
+    <p-floatlabel variant="in">
+      <input pInputText formControlName="firstName" maxlength="20" />
+      <label class="required">First Name</label>
+    </p-floatlabel>
+    <small class="text-red-500" *ngIf="frmPayment.firstName.errors?.required &&submitForm">
+      First Name is required.
+    </small>
+
+  </div>
+
+  <div class="field col-12 md:col-6">
+    <p-floatlabel variant="in">
+      <input pInputText formControlName="lastName" maxlength="20" />
+      <label class="required">Last Name</label>
+    </p-floatlabel>
+    <small class="text-red-500" *ngIf="(frmPayment.lastName.errors?.required &&submitForm)">
+      Last Name is required.
+    </small>
+  </div>
+
+  <div class="field col-12 md:col-6">
+    <p-floatlabel variant="in">
+      <input pInputText formControlName="email" maxlength="64"/>
+      <label class="required">Email</label>
+    </p-floatlabel>
+    <small class="text-red-500" *ngIf="frmPayment.email.errors?.required &&submitForm">
+      Email is required.
+    </small>
+    <small class="text-red-500" *ngIf="frmPayment.email?.errors?.pattern && submitForm">Email is
+      invalid.</small>
+  </div>
+
+  <div class="field col-12 md:col-6">
+    <label class="required">Card Details</label>
+    <div class="payment-field">
+      <form #checkout="ngForm">
+        <div #cardInfo></div>
+      </form>
+    </div>
+  </div>
+</div>
